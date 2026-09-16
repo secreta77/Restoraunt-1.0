@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>restaurant</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+
+            <a href="index.html" class="logo">Foodie</a>
+
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="./html/menu.html">Menu</a>
+    
+            </nav>
+
+            <div class="header-actions">
+                <a href="./html/cart.html" class="cart-link">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge" hidden></span>
+            </div>
+
+            <!-- არ დალოგინებული მომხმარებლისთვის  -->
+            <div class="auth-buttons" id="authButtons" hidden>
+                <a href="./html/login.html" class="btn-outline">Login</a>
+                <a href="./html/register.html" class="btn-primary">Sign Up</a>
+              </div>
+
+            <!-- დალოგინებული მომხმარებლისთვის -->
+            <div class="user-menu" id="userMenu" hidden>
+                <button class="avatar-btn" id="avatarBtn" type="button">
+                  <i class="fa-solid fa-user"></i>
+                </button>
+                <div class="user-dropdown" id="userDropdown" hidden>
+                    <!-- სპან ი დამჭირდება დალოგინებული მომხმარებლის სახელის გამოსატანად js ით -->
+                  <p class="dropdown-hello">Hello: <span id="userNameLabel"></span></p>  
+                  <a href="profile.html">Profile</a>
+                  <button id="logoutBtn" type="button">Logout</button>
+                </div>
+            </div>
+
+
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Delicious Food Delivered to Your Door</h1>
+            <p>Fresh ingredients, authentic flavors, fast delivery</p>
+            <a href="./html/menu.html" class="btn-primary">Order Now</a>
+        </section>
+
+        <section class="popular-dishes">
+            <h2>Popular Dishes</h2>
+
+
+        </section>
+    </main>
+
+    <script src="./js/scipt.js"></script>
+</body>
+</html>
