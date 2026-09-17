@@ -1,6 +1,6 @@
 const dishGrid = document.getElementById('dishGrid')
 
-fetch(`https://restaurantapi.stepacademy.ge/api/products?Take=6&Page=1
+fetch(`https://restaurantapi.stepacademy.ge/api/products?Take=50&Page=1
 `,{
     headers: { 'X-API-KEY': API_KEY },
      'Content-Type': 'application/json'
@@ -12,7 +12,12 @@ fetch(`https://restaurantapi.stepacademy.ge/api/products?Take=6&Page=1
   .then(function (result) {
     const products = result.data.products;
 
-    products.forEach(product => {
+    products.sort(function (a, b) {
+      return b.rate - a.rate;
+    });
+
+    products.slice(0, 6).forEach(product => {
+      
         dishGrid.innerHTML += `
         <div class="dish-card">
           <img src="${product.image}" alt="${product.name}">
