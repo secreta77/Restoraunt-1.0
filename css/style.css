@@ -17,7 +17,7 @@ body {
   -webkit-backdrop-filter: blur(0.8rem);
 }
 .header .header-container {
-  max-width: 128rem;
+  max-width: 160rem;
   margin: 0 auto;
   padding: 1.6rem 2rem;
   display: flex;
@@ -61,7 +61,7 @@ body {
   border-radius: 3rem;
 }
 .btn-primary:hover {
-  background-color: rgb(255, 77.1069306931, 12.2);
+  background-color: rgb(255, 88.9469306931, 28.36);
 }
 
 .hero {
@@ -93,7 +93,7 @@ body {
 }
 
 .popular-dishes {
-  max-width: 128rem;
+  max-width: 160rem;
   margin: 0 auto;
   padding: 4rem 2rem;
   text-align: center;
@@ -106,7 +106,7 @@ body {
 .popular-dishes .dish-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
+  gap: 2rem;
 }
 .popular-dishes .dish-card {
   text-align: left;
@@ -116,12 +116,12 @@ body {
 }
 .popular-dishes .dish-card img {
   width: 100%;
-  height: 20rem;
+  height: 26rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .popular-dishes .dish-card h3 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   margin: 1.6rem 1.6rem 0.4rem;
 }
@@ -131,7 +131,7 @@ body {
   margin: 0 1.6rem;
 }
 .popular-dishes .dish-card .price {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #ff6b35;
   margin: 0.8rem 1.6rem 1.6rem;
@@ -144,29 +144,59 @@ body {
   text-align: center;
 }
 
-@media (max-width: 480px) {
-  .dish-grid {
-    gap: 0.8rem;
+.story .story-container {
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  gap: 4rem;
+}
+.story .story-container .photo-container {
+  flex: 1 1 45rem;
+  max-width: 85rem;
+}
+.story .story-container .photo-container img {
+  width: 100%;
+  height: 40rem;
+  border-radius: 0.8rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.story .story-container .right-side {
+  max-width: 65rem;
+  min-width: 32rem;
+  width: 100%;
+  flex: 1;
+}
+.story .story-container .right-side h2 {
+  font-size: clamp(2.7rem, 5vw, 3rem);
+  font-family: sans-serif;
+  font-weight: 800;
+  margin-bottom: 1.6rem;
+}
+.story .story-container .right-side p {
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+}
+
+@media (max-width: 980px) {
+  .popular-dishes .dish-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .dish-card img {
-    height: 10rem;
+}
+@media (max-width: 780px) {
+  .story .story-container {
+    flex-direction: column;
   }
-  .dish-card h3 {
-    font-size: 1.2rem;
-    margin: 0.8rem 0.8rem 0.2rem;
+  .story .story-container .photo-container img {
+    height: auto;
+    aspect-ratio: 16/10;
   }
-  .dish-card .rating,
-  .dish-card .price {
-    font-size: 1.1rem;
-    margin: 0 0.8rem;
+  .popular-dishes .dish-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
-  .dish-card .price {
-    margin-bottom: 0.8rem;
-  }
-  .dish-card .btn-primary {
-    font-size: 1.1rem;
-    width: calc(100% - 1.6rem);
-    margin: 0 0.8rem 0.8rem;
-    padding: 0.8rem 0;
+  .story .story-container .photo-container {
+    flex: 1 1 18rem;
   }
 }/*# sourceMappingURL=style.css.map */
