@@ -259,7 +259,7 @@ body {
         .story-container{
             .photo-container{
                 flex: 1 1 18rem;
-        
+
             }
 
         }
@@ -268,5 +268,107 @@ body {
     }
 
 
+}
+
+.footer {
+    background-color: #f8f8f8;
+    padding: 6rem 2rem 3rem;
+
+    .footer-container {
+        max-width: 160rem;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 4rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .footer-brand {
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: config.$primary-color;
+            margin-bottom: 1.2rem;
+        }
+
+        p {
+            color:gray;
+            font-size: 1.4rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.6rem;
+
+            a {
+                color: #333;
+                font-size: 1.6rem;
+
+                &:hover {
+                    color: config.$primary-color;
+                    
+                }
+            }
+        }
+    }
+
+    .footer-col {
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.6rem;
+        }
+
+        p {
+            color: #666;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        a {
+            display: block;
+            color: #666;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+
+            &:hover {
+                color: config.$primary-color;
+            }
+        }
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.6rem;
+
+        input {
+            flex: 1;
+            padding: 1rem 1.4rem;
+            border: 1px solid #ddd;
+            border-radius: 0.6rem;
+            font-size: 1.4rem;
+            font-family: config.$font-main;
+        }
+
+        .btn-primary {
+            padding: 1rem 1.8rem;
+            white-space: nowrap;
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .footer .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer .footer-container {
+        grid-template-columns: 1fr;
+    }
 }
 
