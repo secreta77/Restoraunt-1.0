@@ -31,8 +31,7 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
                 return
             }
 
-            alert('Account created! Please check your email to verify your account.');
-            window.location.href = './login.html';
+            window.location.href = './verify-email.html?email=' + encodeURIComponent(email);
         })
 })
 
