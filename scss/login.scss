@@ -56,15 +56,18 @@ input{
 
     input {
         padding-right: 4rem;
+        padding: 1rem 1rem;
     }
 
     i {
         position: absolute;
         right: 1.4rem;
-        top: 50%;
+        top: 38%;
         transform: translateY(-50%);
         color: #666;
         cursor: pointer;
+        font-size: 1.4rem;
+
     }
 }
 
@@ -87,7 +90,10 @@ input{
 input {
     width: auto;
     margin-bottom: 0;
+    accent-color: #eb5833;
 }
+
+
 
 a{
     color: config.$primary-color;
