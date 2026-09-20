@@ -6,9 +6,39 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../css/login.css">
     <title>Log in</title>
 </head>
 <body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <h1>Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to your account</p>
+    
+            <form id="loginForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+    
+                <label for="password">Password</label>
+                <div class="password-field">
+                <input type="password" id="password" placeholder="••••••••" required>
+                <i class="fa-regular fa-eye" id="togglePassword"></i>
+                </div>
+    
+                <div class="auth-row">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+                    <a href="./forgot-password.html">Forgot password?</a>
+                </div>
+    
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+            <p class="top-p">or</p>
+            <p class="auth-switch">Don't have an account? <a href="./register.html">Sign up</a></p>
+        </div>
+    </div>
     
 </body>
 </html>
