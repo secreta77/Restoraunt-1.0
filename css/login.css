@@ -15,6 +15,23 @@
   padding: 3.2rem;
   text-align: center;
 }
+.auth-page .auth-card .name-row {
+  display: flex;
+  gap: 1.6rem;
+}
+.auth-page .auth-card .name-row > div {
+  flex: 1;
+}
+.auth-page .auth-card .password-hints {
+  list-style: disc;
+  padding-left: 1.8rem;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  color: #666;
+}
+.auth-page .auth-card .password-hints li {
+  margin-bottom: 0.4rem;
+}
 .auth-page .auth-card h1 {
   font-size: 2.6rem;
   font-weight: 700;
@@ -24,6 +41,7 @@
   color: #666;
   font-size: 1.4rem;
   margin-bottom: 2.4rem;
+  margin-top: 2rem;
 }
 .auth-page .auth-card form {
   text-align: left;
