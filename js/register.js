@@ -1,39 +1,39 @@
-document.getElementById('registerForm').addEventListener('submit',function(event){
+document.getElementById('registerForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
 
-const firtsName = document.getElementById('firstName')
-const lastName = document.getElementById('lastName')
-const email = document.getElementById('email')
-const password = document.getElementById('password')
+    const firstName = document.getElementById('firstName').value
+    const lastName = document.getElementById('lastName').value
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
 
 
-fetch(`${API_BASE_URL}/api/auth/register`,{
-    method:'POST',
-    headers:{
-        'X-API-LEY':API_KEY,
-        'Content-Type':'application/json'
-    },
-    body:JSON.stringify({
-        firtsName:firtsName,
-        lastName:lastName,
-        email:email,
-        password:password
+    fetch(`${API_BASE_URL}/api/auth/register`, {
+        method: 'POST',
+        headers: {
+            'X-API-KEY': API_KEY,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        })
     })
-})
-.then(function(response){
-    return response.json();
-})
+        .then(function (response) {
+            return response.json();
+        })
 
-.then(function(result){
-    if(!result.data){
-        alert(result.detail || 'Registration failed')
-        return
-    }
+        .then(function (result) {
+            if (!result.data) {
+                alert(result.detail || 'Registration failed')
+                return
+            }
 
-    alert('Account created! Please check your email to verify your account.');
-    window.location.href = './login.html';
-})
+            alert('Account created! Please check your email to verify your account.');
+            window.location.href = './login.html';
+        })
 })
 
 
