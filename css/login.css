@@ -98,6 +98,7 @@
   justify-content: space-between;
   margin-bottom: 2rem;
   font-size: 1.4rem;
+  margin-top: 1rem;
 }
 .auth-page .auth-card .auth-row .remember-me {
   display: flex;
