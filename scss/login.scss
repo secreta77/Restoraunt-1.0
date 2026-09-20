@@ -1,5 +1,10 @@
 @use 'config';
 
+::selection {
+    background-color: config.$primary-color;
+    color: white;
+}
+
 .auth-page{
     min-height: 100vh;
     display: flex;
@@ -73,7 +78,16 @@ input{
         font-size: 1.4rem;
         font-family: config.$font-main;
         margin-bottom: 1.6rem;
+
+
 }
+input:focus {
+    border: 2px solid config.$primary-color;
+    outline: none;
+
+}
+
+
 
 .password-field{
     position: relative;
