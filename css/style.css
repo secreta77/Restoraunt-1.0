@@ -180,7 +180,12 @@ body {
   text-align: left;
   border-radius: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.8rem 2.4rem rgba(255, 107, 53, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.popular-dishes .dish-card:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: 0 1.2rem 3.2rem rgba(255, 107, 53, 0.4);
 }
 .popular-dishes .dish-card img {
   width: 100%;
