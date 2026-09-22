@@ -192,3 +192,43 @@ fetch(`${API_BASE_URL}/api/users/change-password`,{
     document.getElementById('passwordForm').reset();
 })
 })
+
+
+// account settings
+
+document.getElementById('deleteAccountBtn').addEventListener('click',function(){
+    document.getElementById('deleteModal').hidden=false
+})
+
+document.getElementById('cancelDeleteBtn').addEventListener('click',function(){
+    document.getElementById('deleteModal').hidden=true
+})
+
+document.getElementById('confirmDeleteBtn').addEventListener('click',function(){
+    fetch(`${API_BASE_URL}/api/users/delete`,{
+        method:'DELETE',
+        headers:{
+            'X-API-KEY':API_KEY,
+            'Authorization':`Bearer ${accessToken}`
+        }
+    })
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(result){
+        if(result.detail){
+            showToast('error',result.detail)
+            return
+
+        }
+
+        if(result.isSuccess === false){
+            showToast('Error', result.error.message)
+            return
+        }
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    alert('your account has been deleted')
+    window.location.href='../index.html'
+    })
+})

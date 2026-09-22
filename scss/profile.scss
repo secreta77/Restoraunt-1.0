@@ -189,3 +189,39 @@ input:focus {
         background-color: #d32f2f;
     }
 }
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background-color: white;
+    border-radius: 1.2rem;
+    padding: 2.4rem;
+    max-width: 44rem;
+    width: 90%;
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+    }
+
+    p {
+        color: #666;
+        font-size: 1.4rem;
+        margin-bottom: 2.4rem;
+    }
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+}
