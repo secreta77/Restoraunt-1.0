@@ -1,3 +1,5 @@
+
+// profile
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
@@ -116,4 +118,77 @@ document.getElementById('personalForm').addEventListener('submit',function(event
             originalAge = age;
             originalPicture = picture;
         })
+})
+
+
+// chnage password
+document.getElementById('toggleCurrentPassword').addEventListener('click',function(){
+    const passwordInput = document.getElementById('currentPassword')
+
+    if(passwordInput.type==='password'){
+        passwordInput.type ='text'
+        this.classList.remove('fa-eye')
+        this.classList.add('fa-eye-slash')
+    }else{
+        passwordInput.type ='password'
+        this.classList.remove('fa-eye-slash')
+        this.classList.add('fa-eye')
+    }
+})
+
+
+document.getElementById('toggleNewPassword').addEventListener('click', function () {
+    const passwordInput = document.getElementById('newPassword');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        this.classList.remove('fa-eye');
+        this.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        this.classList.remove('fa-eye-slash');
+        this.classList.add('fa-eye');
+    }
+});
+
+
+document.getElementById('passwordForm').addEventListener('submit',function(event){
+    event.preventDefault()
+
+
+
+    const currentPassword = document.getElementById('currentPassword').value
+    const newPassword = document.getElementById('newPassword').value
+    const confirmPassword = document.getElementById('confirmNewPassword').value
+
+
+if(newPassword!==confirmPassword){
+    showToast('Error', 'New passwords do not match.')
+    return
+
+
+}
+
+fetch(`${API_BASE_URL}/api/users/change-password`,{
+    method:'PUT',
+    headers:{
+        'X-API-KEY':API_KEY,
+        'Content-type':'application/json',
+        'Authorization':`Bearer ${accessToken}`
+    },
+
+    body:JSON.stringify({ oldPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword })
+
+})
+.then(function(response){
+    return response.json()
+})
+.then(function(result){
+    if(result.isSuccess===false){
+        showToast('Error', result.error.message)
+        return
+    }
+
+    showToast('Saved', 'Your password has been updated.')
+    document.getElementById('passwordForm').reset();
+})
 })

@@ -76,6 +76,11 @@
   min-height: 8rem;
 }
 
+input:focus {
+  border: 2px solid #ff6b35;
+  outline: none;
+}
+
 .profile-picture {
   width: 8rem;
   height: 8rem;
@@ -113,10 +118,11 @@
 .password-field i {
   position: absolute;
   right: 1.4rem;
-  top: 50%;
+  top: 41%;
   transform: translateY(-50%);
   color: #666;
   cursor: pointer;
+  font-size: 1.7rem;
 }
 
 .password-hints {
