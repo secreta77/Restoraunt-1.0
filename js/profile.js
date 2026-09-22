@@ -1,6 +1,13 @@
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
+let originalFirstName = ''
+let originalLastName = ''
+let originalPhoneNumber = ''
+let originalAddress = ''
+let originalAge = ''
+let originalPicture = ''
+
 
 function updateProfilePicture(url) {
     const container = document.getElementById('profilePicture')
@@ -48,9 +55,16 @@ fetch(`${API_BASE_URL}/api/users/profile`,{
     document.getElementById('lastName').value = profile.lastName || ''
     document.getElementById('email').value = profile.email || ''
     document.getElementById('phoneNumber').value = profile.phoneNumber || ''
-        document.getElementById('address').value = profile.address || ''
-        document.getElementById('age').value = profile.age || ''
-        document.getElementById('picture').value = profile.picture || '', updateProfilePicture(profile.picture);
+    document.getElementById('address').value = profile.address || ''
+    document.getElementById('age').value = profile.age || ''
+    document.getElementById('picture').value = profile.picture || '', updateProfilePicture(profile.picture);
+
+    originalFirstName = document.getElementById('firstName').value
+    originalLastName = document.getElementById('lastName').value
+    originalPhoneNumber = document.getElementById('phoneNumber').value
+    originalAddress = document.getElementById('address').value
+    originalAge = document.getElementById('age').value
+    originalPicture = document.getElementById('picture').value
 })
 
 
@@ -65,6 +79,14 @@ document.getElementById('personalForm').addEventListener('submit',function(event
     const age = document.getElementById('age').value;
     const picture = document.getElementById('picture').value;
 
+    const updateData = {};
+
+    if (firstName !== originalFirstName) updateData.firstName = firstName
+    if (lastName !== originalLastName) updateData.lastName = lastName
+    if (phoneNumber !== originalPhoneNumber) updateData.phoneNumber = phoneNumber
+    if (address !== originalAddress) updateData.address = address
+    if (age && age !== originalAge) updateData.age = Number(age)
+    if (picture !== originalPicture) updateData.picture = picture
 
     fetch(`${API_BASE_URL}/api/users/edit`,{
         method:'PUT',
@@ -73,14 +95,7 @@ document.getElementById('personalForm').addEventListener('submit',function(event
              'Authorization': `Bearer ${accessToken}`,
              'Content-type':'application/json'
         },
-        body:JSON.stringify({
-            firstName: firstName,
-            lastName: lastName,
-            phoneNumber: phoneNumber,
-            address: address,
-            age: Number(age),
-            picture: picture
-        })
+        body: JSON.stringify(updateData)
     })
 
         .then(function(response){
@@ -93,5 +108,12 @@ document.getElementById('personalForm').addEventListener('submit',function(event
             }
             showToast('Saved', 'Your profile has been updated.')
              updateProfilePicture(picture);
+
+            originalFirstName = firstName;
+            originalLastName = lastName;
+            originalPhoneNumber = phoneNumber;
+            originalAddress = address;
+            originalAge = age;
+            originalPicture = picture;
         })
 })
