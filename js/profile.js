@@ -1,6 +1,19 @@
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
+
+function updateProfilePicture(url) {
+    const container = document.getElementById('profilePicture')
+
+    if (url) {
+        container.innerHTML = `<img src="${url}" alt="Profile picture">`
+    } else {
+        container.innerHTML = '<i class="fa-solid fa-user"></i>'
+    }
+}
+    
+
+
 tabButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         const targetTab = button.dataset.tab;
@@ -37,7 +50,7 @@ fetch(`${API_BASE_URL}/api/users/profile`,{
     document.getElementById('phoneNumber').value = profile.phoneNumber || ''
         document.getElementById('address').value = profile.address || ''
         document.getElementById('age').value = profile.age || ''
-        document.getElementById('picture').value = profile.picture || ''
+        document.getElementById('picture').value = profile.picture || '', updateProfilePicture(profile.picture);
 })
 
 
@@ -69,7 +82,7 @@ document.getElementById('personalForm').addEventListener('submit',function(event
             picture: picture
         })
     })
-    
+
         .then(function(response){
             return response.json()
         })
@@ -79,5 +92,6 @@ document.getElementById('personalForm').addEventListener('submit',function(event
                 return;
             }
             showToast('Saved', 'Your profile has been updated.')
+             updateProfilePicture(picture);
         })
 })

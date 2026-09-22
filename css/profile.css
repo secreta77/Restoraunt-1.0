@@ -88,6 +88,13 @@
   color: #999;
   margin-bottom: 2.4rem;
 }
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
 
 .name-row {
   display: flex;
