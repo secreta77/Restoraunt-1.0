@@ -1,0 +1,255 @@
+@use 'config';
+
+.menu-layout {
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
+    gap: 3.2rem;
+    align-items: flex-start;
+}
+
+.filters-sidebar {
+    flex: 0 0 27rem;
+    width: 27rem;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+}
+
+.filter-group {
+    margin-bottom: 2.4rem;
+
+    label {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.6rem;
+        font-size: 1.4rem;
+        font-family: config.$font-main;
+    }
+
+    input[type="text"]:focus {
+        border: 2px solid config.$primary-color;
+        outline: none;
+    }
+
+    input[type="range"] {
+        width: 100%;
+        accent-color: config.$primary-color;
+        
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: white;
+            border: 0.4rem solid config.$primary-color;
+            cursor: pointer;
+        }
+
+        &::-moz-range-thumb {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: white;
+            border: 0.4rem solid config.$primary-color;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+    }
+
+    .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 400;
+        margin-bottom: 0;
+        cursor: pointer;
+
+        input {
+            accent-color: config.$primary-color;
+        }
+    }
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+        margin-bottom: 0;
+    }
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 4.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .slider-toggle {
+            background-color: config.$primary-color;
+        }
+
+        &:checked + .slider-toggle::before {
+            transform: translateX(2rem);
+        }
+    }
+
+    .slider-toggle {
+        position: absolute;
+        inset: 0;
+        background-color: #ccc;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0.3rem;
+            top: 0.3rem;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+    }
+}
+
+.range-value {
+    font-size: 1.3rem;
+    color: #666;
+    margin-top: 0.4rem;
+
+    .fa-star {
+        color: config.$primary-color;
+    }
+}
+
+.clear-filters {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: config.$primary-color;
+    border: none;
+    border-radius: 0.8rem;
+    color: white;
+    padding: 1rem 1rem;
+}
+
+.menu-content {
+    flex: 1;
+    min-width: 0;
+
+    h1 {
+        font-size: 3.2rem;
+        font-weight: 700;
+    }
+
+    .results-count {
+        color: #666;
+        font-size: 1.4rem;
+        margin-bottom: 2.4rem;
+    }
+
+    .dish-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+        gap: 2rem;
+    }
+
+    .dish-card {
+        text-align: left;
+        border-radius: 1.2rem;
+        overflow: hidden;
+        box-shadow: 0 0.8rem 2.4rem rgba(255, 107, 53, 0.35);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-0.8rem);
+            box-shadow: 0 1.2rem 3.2rem rgba(255, 107, 53, 0.4);
+        }
+
+        img {
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 1.6rem 1.6rem 0.4rem;
+        }
+
+        .dish-description {
+            font-size: 1.3rem;
+            color: #666;
+            margin: 0 1.6rem 0.8rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .rating {
+            font-size: 1.4rem;
+            color: config.$primary-color;
+            margin: 0 1.6rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: config.$primary-color;
+            margin: 0.8rem 1.6rem 1.6rem;
+        }
+
+        .btn-primary {
+            display: block;
+            width: calc(100% - 3.2rem);
+            margin: 0 1.6rem 1.6rem;
+            padding: 1.2rem 0;
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 980px) {
+    .menu-content .dish-grid {
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    }
+}
+
+@media (max-width: 780px) {
+    .menu-layout {
+        flex-direction: column;
+    }
+
+    .filters-sidebar {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+}

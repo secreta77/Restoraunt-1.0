@@ -1,4 +1,8 @@
 
+if (!accessToken) {
+    window.location.href = './login.html';
+}
+
 // profile
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');

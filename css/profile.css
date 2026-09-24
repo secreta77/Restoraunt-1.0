@@ -96,7 +96,8 @@ input:focus {
 .profile-picture img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 
@@ -198,6 +199,4 @@ input:focus {
   display: flex;
   justify-content: flex-end;
   gap: 1.2rem;
-}
-
-/*# sourceMappingURL=profile.css.map */
+}/*# sourceMappingURL=profile.css.map */

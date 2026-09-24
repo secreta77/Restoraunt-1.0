@@ -6,9 +6,155 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../css/menu.css">
     <title>Menu</title>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo">Foodie</a>
+
+                <nav class="nav">
+                    <a href="../index.html">Home</a>
+                    <a href="./menu.html">Menu</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="header-actions">
+                    <a href="./cart.html" class="cart-link">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cartBadge" hidden></span>
+                    </a>
+                </div>
+
+                <div class="auth-buttons" id="authButtons" hidden>
+                    <a href="./login.html" class="btn-outline">Login</a>
+                    <a href="./register.html" class="btn-primary">Sign Up</a>
+                </div>
+
+                <div class="user-menu" id="userMenu" hidden>
+                    <button class="avatar-btn" id="avatarBtn" type="button">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown" hidden>
+                        <p class="dropdown-hello">Hello: <span id="userNameLabel"></span></p>
+                        <a href="./profile.html">Profile</a>
+                        <button id="logoutBtn" type="button">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="menu-page">
+        <div class="menu-layout">
+            <aside class="filters-sidebar">
+                <h2>Filters</h2>
+
+                <div class="filter-group">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Search dishes...">
+                </div>
+
+                <div class="filter-group">
+                    <label>Categories</label>
+                    <div class="category-list">
+                        <label class="checkbox-row"><input type="checkbox" value="Desserts"> Desserts</label>
+                        <label class="checkbox-row"><input type="checkbox" value="First Courses"> First Courses</label>
+                        <label class="checkbox-row"><input type="checkbox" value="Main Courses"> Main Courses</label>
+                        <label class="checkbox-row"><input type="checkbox" value="Pizzas"> Pizzas</label>
+                        <label class="checkbox-row"><input type="checkbox" value="Side Dishes"> Side Dishes</label>
+                        <label class="checkbox-row"><input type="checkbox" value="Appetizers"> Appetizers</label>
+                    </div>
+                </div>
+
+                <div class="filter-group toggle-row">
+                    <label for="vegOnly">Vegetarian Only</label>
+                    <label class="switch">
+                        <input type="checkbox" id="vegOnly">
+                        <span class="slider-toggle"></span>
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <label for="spicinessRange">Spiciness (0-5)</label>
+                    <input type="range" id="spicinessRange" min="0" max="5" step="1">
+                    <p class="range-value" id="spicinessValue">Level: not selected</p>
+                </div>
+
+                <div class="filter-group">
+                    <label for="ratingRange">Minimum Rating</label>
+                    <input type="range" id="ratingRange" min="0" max="5" step="0.5">
+                    <p class="range-value" id="ratingValue"><i class="fa-solid fa-star"></i> 0.0+</p>
+                </div>
+
+                <div class="filter-group">
+                    <label for="minPriceRange">Min price</label>
+                    <input type="range" id="minPriceRange" min="0" max="500" step="10">
+                </div>
+
+                <div class="filter-group">
+                    <label for="maxPriceRange">Max price</label>
+                    <input type="range" id="maxPriceRange" min="0" max="500" step="10">
+                    <p class="range-value" id="maxPriceValue">$ 500+</p>
+                </div>
+
+                <button class="btn-outline clear-filters" id="clearFiltersBtn" type="button">Clear All Filters</button>
+            </aside>
+
+            <div class="menu-content">
+                <h1>Menu</h1>
+                <p class="results-count" id="resultsCount">Showing 10 products</p>
+
+                <div class="dish-grid" id="menuGrid"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <p class="footer-logo">Foodie</p>
+                <p>Delicious food delivered to your door</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>123 Food Street</p>
+                <p>City, State 12345</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Mon-Sun: 10AM - 10PM</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="./menu.html">Menu</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get special offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/scipt.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 </html>

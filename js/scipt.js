@@ -1,9 +1,5 @@
 const accessToken = localStorage.getItem('accessToken')
 
-if (!accessToken) {
-    window.location.href = './login.html';
-}
-
 if (accessToken) {
     document.getElementById('userMenu').hidden = false
     fetch(`${API_BASE_URL}/api/users/me`,{
@@ -36,3 +32,5 @@ document.getElementById('logoutBtn').addEventListener('click',function(){
     window.location.reload()
 
 })
+
+
