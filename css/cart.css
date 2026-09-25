@@ -37,7 +37,8 @@
 .cart-item img {
   width: 8rem;
   height: 8rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 0.8rem;
   flex-shrink: 0;
 }
@@ -141,7 +142,7 @@
   cursor: pointer;
 }
 .btn-checkout:hover {
-  background-color: rgb(57.7870439315%, 19.1541325391%, 19.1541325391%);
+  background-color: rgb(147.3569620253, 48.8430379747, 48.8430379747);
 }
 
 .modal-backdrop {
@@ -205,6 +206,4 @@
     flex: 1;
     width: 100%;
   }
-}
-
-/*# sourceMappingURL=cart.css.map */
+}/*# sourceMappingURL=cart.css.map */
