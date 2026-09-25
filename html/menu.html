@@ -50,8 +50,13 @@
 
     <main class="menu-page">
         <div class="menu-layout">
-            <aside class="filters-sidebar">
-                <h2>Filters</h2>
+            <aside class="filters-sidebar" id="filtersSidebar">
+                <div class="filters-sidebar-header">
+                    <h2>Filters</h2>
+                    <button class="filters-close-btn" id="filtersCloseBtn" type="button" aria-label="Close filters">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
 
                 <div class="filter-group">
                     <label for="searchInput">Search</label>
@@ -104,8 +109,15 @@
                 <button class="btn-outline clear-filters" id="clearFiltersBtn" type="button">Clear All Filters</button>
             </aside>
 
+            <div class="filters-backdrop" id="filtersBackdrop"></div>
+
             <div class="menu-content">
-                <h1>Menu</h1>
+                <div class="menu-title-row">
+                    <h1>Menu</h1>
+                    <button class="filter-toggle-btn" id="filterToggleBtn" type="button" aria-label="Open filters">
+                        <i class="fa-solid fa-filter"></i>
+                    </button>
+                </div>
                 <p class="results-count" id="resultsCount">Showing 10 products</p>
 
                 <div class="dish-grid" id="menuGrid"></div>

@@ -6,9 +6,131 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../css/cart.css">
     <title>Cart</title>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="../index.html" class="logo">Foodie</a>
+
+                <nav class="nav">
+                    <a href="../index.html">Home</a>
+                    <a href="./menu.html">Menu</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="header-actions">
+                    <a href="./cart.html" class="cart-link">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cartBadge" hidden></span>
+                    </a>
+                </div>
+
+                <div class="auth-buttons" id="authButtons" hidden>
+                    <a href="./login.html" class="btn-outline">Login</a>
+                    <a href="./register.html" class="btn-primary">Sign Up</a>
+                </div>
+
+                <div class="user-menu" id="userMenu" hidden>
+                    <button class="avatar-btn" id="avatarBtn" type="button">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown" hidden>
+                        <p class="dropdown-hello">Hello: <span id="userNameLabel"></span></p>
+                        <a href="./profile.html">Profile</a>
+                        <button id="logoutBtn" type="button">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <div class="cart-layout">
+            <div class="cart-items">
+                <h1>Shopping Cart</h1>
+                <p class="results-count" id="cartItemCount">0 items</p>
+
+                <div id="cartItemsList"></div>
+            </div>
+
+            <aside class="order-summary">
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotalValue">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (10%)</span>
+                    <span id="taxValue">$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="totalValue">$0.00</span>
+                </div>
+
+                <button class="btn-checkout" id="checkoutBtn" type="button">Proceed to Checkout</button>
+            </aside>
+        </div>
+    </main>
+
+    <div class="modal-backdrop" id="removeModalBackdrop" hidden>
+        <div class="modal">
+            <h3>Remove item?</h3>
+            <p>Are you sure you want to remove this item from your cart?</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="removeCancelBtn" type="button">Cancel</button>
+                <button class="btn-danger" id="removeConfirmBtn" type="button">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <p class="footer-logo">Foodie</p>
+                <p>Delicious food delivered to your door</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>123 Food Street</p>
+                <p>City, State 12345</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Mon-Sun: 10AM - 10PM</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="./menu.html">Menu</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get special offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/scipt.js"></script>
+    <script src="../js/cart.js"></script>
 </body>
 </html>

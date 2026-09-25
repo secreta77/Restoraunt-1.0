@@ -14,6 +14,10 @@ function loadpage() {
         .then(function (result) {
             const products = result.data.products
 
+            products.sort(function (a, b) {
+                return b.rate - a.rate;
+              });
+
             resultCount.textContent = 'Showing ' + products.length + ' products'
 
             menuGrid.innerHTML = ''
@@ -40,5 +44,23 @@ function loadpage() {
 }
 
 loadpage()
+
+const filterToggleBtn = document.getElementById('filterToggleBtn')
+const filtersSidebar = document.getElementById('filtersSidebar')
+const filtersCloseBtn = document.getElementById('filtersCloseBtn')
+const filtersBackdrop = document.getElementById('filtersBackdrop')
+
+function closeFilters() {
+    filtersSidebar.classList.remove('open')
+    filtersBackdrop.classList.remove('open')
+}
+
+filterToggleBtn.addEventListener('click', function () {
+    filtersSidebar.classList.add('open')
+    filtersBackdrop.classList.add('open')
+})
+
+filtersCloseBtn.addEventListener('click', closeFilters)
+filtersBackdrop.addEventListener('click', closeFilters)
 
 
