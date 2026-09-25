@@ -447,26 +447,41 @@ body {
 }
 
 
+@keyframes alert-slide-down {
+    from {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
 .alert {
     position: fixed;
     top: 2rem;
-    right: 2rem;
+    left: 50%;
+    transform: translate(-50%, 0);
     background-color: white;
     border: 1px solid #eee;
-    border-radius: 0.8rem;
-    box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.1);
-    padding: 1.6rem 2rem;
-    max-width: 32rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.15);
+    padding: 2.4rem 3.2rem;
+    width: min(37rem, 90vw);
     z-index: 1000;
+    text-align: center;
+    animation: alert-slide-down 0.4s ease-out;
 
     .alert-title {
+        font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.8rem;
     }
 
     .alert-message {
         color: #666;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 }
 

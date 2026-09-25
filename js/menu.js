@@ -65,3 +65,33 @@ filtersCloseBtn.addEventListener('click', closeFilters)
 filtersBackdrop.addEventListener('click', closeFilters)
 
 
+
+
+document.getElementById('menuGrid').addEventListener('click',function(event){
+    const btn = event.target.closest('.add-to-cart-btn')
+    if(!btn){
+        return
+    }
+
+    const accessToken = localStorage.getItem('accessToken')
+
+    if(!accessToken){
+        window.location.href = './login.html'
+        return
+    }
+
+    fetch(`${API_BASE_URL}/api/cart/add-to-cart`,{
+        method:'POST',
+        headers:{
+            'X-API-KEY':API_KEY,
+            'Authorization':`Bearer ${accessToken}`,
+            'Content-type':'application/json'
+
+        },
+        body:JSON.stringify({productId:Number(btn.dataset.productId),quantity:1})
+        
+    })
+    .then(function(){
+        showToast('Added to cart', 'Item added successfully.')
+    })
+})

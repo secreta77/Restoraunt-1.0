@@ -149,9 +149,13 @@ checkoutBtn.addEventListener('click',function(){
         return response.json()
     })
     .then(function(result){
-        if(result.data && result.data.isSuccess){
+        const checkoutResult = result.data ? result.data : result
+
+        if(checkoutResult && checkoutResult.isSuccess){
             showToast('Thank you for your purchase!', 'Your order has been placed and is being processed.')
-            window.location.href = './menu.html'
+            loadCart()
+        } else {
+            showToast('Checkout failed', (checkoutResult && checkoutResult.error && checkoutResult.error.message) || 'Something went wrong, please try again.')
         }
     })
 
