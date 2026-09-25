@@ -30,7 +30,8 @@ function loadpage() {
                     <p class="dish-description">${product.description}</p>
                     <p class="rating"><i class="fa-solid fa-star"></i> ${product.rate}</p>
                     <p class="price">$${product.price.toFixed(2)}</p>
-                    <button class="btn-primary">Add to Cart</button>
+                    <button class="btn-primary add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
+
                 </div>
                 
                 `

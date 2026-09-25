@@ -1,10 +1,8 @@
-const accessToken = localStorage.getItem('accessToken')
-
 if(!accessToken){
-    window.location.href = '.login.html'
+    window.location.href = './login.html'
 }
 
-const cartItemList = document.getElementById('cartItemsList')
+const cartItemsList = document.getElementById('cartItemsList')
 const cartItemCount = document.getElementById('cartItemCount')
 const subtotalValue = document.getElementById('subtotalValue')
 const taxValue = document.getElementById('taxValue')
@@ -15,9 +13,9 @@ const removeCancelBtn = document.getElementById('removeCancelBtn')
 const removeConfirmBtn = document.getElementById('removeConfirmBtn')
 
 
-let itemRemove = null
+let itemIdToRemove = null
 
-function cart(){
+function loadCart(){
     fetch(`${API_BASE_URL}/api/cart`,{
         headers:{
             'X-API-KEY':API_KEY,
@@ -34,18 +32,18 @@ function cart(){
 }
 
 
-function renderCart(){
+function renderCart(cart){
     cartItemCount.textContent = cart.totalItems + ' Items'
-    subtotalValue.textContent = '$' + cart.totalPrice
+    subtotalValue.textContent = '$' + cart.totalPrice.toFixed(2)
 
     const tax = cart.totalPrice * 0.1
-    taxValue.textContent = '$' + tax
-    totalValue.textContent = '$' + (cart.totalPrice + tax)
+    taxValue.textContent = '$' + tax.toFixed(2)
+    totalValue.textContent = '$' + (cart.totalPrice + tax).toFixed(2)
 
     cartItemsList.innerHTML = ''
-    
+
     cart.items.forEach(function(item){
-        cartItemsList.innerHTML = `
+        cartItemsList.innerHTML += `
          <div class="cart-item">
             <img src="${item.product.image}" alt="${item.product.name}">
 
@@ -69,15 +67,16 @@ function renderCart(){
                 <i class="fa-solid fa-trash"></i>
             </button>
         </div>
-        
+
         `
     })
 }
 
 function editQuantity(itemId,quantity){
     fetch(`${API_BASE_URL}/api/cart/edit-quantity`,{
-        method:`PUT`,
+        method: 'PUT',
         headers:{
+        'X-API-KEY': API_KEY,
         'Authorization':`Bearer ${accessToken}`,
         'Content-Type':'application/json'
 
@@ -85,7 +84,83 @@ function editQuantity(itemId,quantity){
         body: JSON.stringify({itemId:itemId,quantity:quantity})
 
     })
-    .then(Cart())
+    .then(loadCart)
 
 
 }
+
+
+cartItemsList.addEventListener('click',function(event){
+    const decrease = event.target.closest('.qty-decrease')
+    const increase = event.target.closest('.qty-increase')
+    const remove = event.target.closest('.cart-item-remove')
+
+
+if(decrease){
+    const current = Number(decrease.dataset.quantity)
+
+    if(current>1){
+        editQuantity(decrease.dataset.itemId, current-1)
+    }
+
+}
+
+if(increase){
+    const current = Number(increase.dataset.quantity)
+    editQuantity(increase.dataset.itemId,current+1)
+
+}
+
+if(remove){
+    itemIdToRemove = remove.dataset.itemId
+    removeModalBackdrop.hidden = false
+}
+})
+
+removeCancelBtn.addEventListener('click',function () {
+    itemIdToRemove = null
+    removeModalBackdrop.hidden = true
+
+})
+
+removeConfirmBtn.addEventListener('click', function () {
+    fetch(`${API_BASE_URL}/api/cart/remove-from-cart/${itemIdToRemove}`, {
+        method: 'DELETE',
+        headers: {
+            'X-API-KEY': API_KEY,
+            'Authorization': `Bearer ${accessToken}`
+        }
+    }).then(function () {
+        removeModalBackdrop.hidden = true
+        loadCart()
+    })
+})
+
+
+checkoutBtn.addEventListener('click',function(){
+    fetch(`${API_BASE_URL}/api/cart/checkout`, {
+        method:'POST',
+        headers:{
+            'X-API-KEY': API_KEY,
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(result){
+        if(result.data && result.data.isSuccess){
+            showToast('Thank you for your purchase!', 'Your order has been placed and is being processed.')
+            window.location.href = './menu.html'
+        }
+    })
+
+})
+loadCart()
+
+
+
+
+
+
+
