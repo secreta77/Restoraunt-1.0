@@ -32,3 +32,6 @@ fetch(`https://restaurantapi.stepacademy.ge/api/products?Take=50&Page=1
     });
 
   })
+
+
+
