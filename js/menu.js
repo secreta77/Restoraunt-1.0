@@ -99,10 +99,20 @@ document.getElementById('menuGrid').addEventListener('click',function(event){
 
         },
         body:JSON.stringify({productId:Number(btn.dataset.productId),quantity:1})
-        
+
     })
-    .then(function(){
-        showToast('Added to cart', 'Item added successfully.')
+    .then(function(response){
+        return response.json().then(function(result){
+            return { ok: response.ok, result: result }
+        })
+    })
+    .then(function(outcome){
+        if(outcome.ok){
+            showToast('Added to cart', 'Item added successfully.')
+            updateCart()
+        } else {
+            showToast('Could not add to cart', outcome.result.detail || 'Something went wrong, please try again.')
+        }
     })
 })
 
@@ -124,3 +134,5 @@ nextPageBtn.addEventListener('click',function(){
     currentPage = currentPage + 1
     renderPage()
 })
+
+

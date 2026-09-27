@@ -133,6 +133,7 @@ removeConfirmBtn.addEventListener('click', function () {
     }).then(function () {
         removeModalBackdrop.hidden = true
         loadCart()
+        updateCart()
     })
 })
 
@@ -154,6 +155,7 @@ checkoutBtn.addEventListener('click',function(){
         if(checkoutResult && checkoutResult.isSuccess){
             showToast('Thank you for your purchase!', 'Your order has been placed and is being processed.')
             loadCart()
+            updateCart()
         } else {
             showToast('Checkout failed', (checkoutResult && checkoutResult.error && checkoutResult.error.message) || 'Something went wrong, please try again.')
         }
