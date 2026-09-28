@@ -5,15 +5,62 @@ const PRODUCTS_PER_PAGE = 10
 let currentPage = 1
 let allProducts = []
 
+const CATEGORY_IDS = {
+    'Appetizers': 1,
+    'First Courses': 2,
+    'Main Courses': 3,
+    'Pizzas': 4,
+    'Side Dishes': 5,
+    'Desserts': 6
+}
+
 const prevPageBtn = document.getElementById('prevPageBtn')
 const nextPageBtn = document.getElementById('nextPageBtn')
 
+
+
+
 function loadpage() {
-    fetch(`${API_BASE_URL}/api/products/filter?Take=100&Page=1`, {
+    const params = new URLSearchParams()
+    params.set('Take','100')
+    params.set('Page','1')
+
+    const searchInput = document.getElementById('searchInput').value
+    if(searchInput){
+        params.set('Query',searchInput)
+    }
+    if(document.getElementById('vegOnly').checked){
+        params.set('Vegetarian','true')
+    }
+    const spiciness = document.getElementById('spicinessRange').value
+    if(spiciness>0){
+        params.set('Spiciness',spiciness)
+    }
+    const rating = document.getElementById('ratingRange').value
+    if(rating>0){
+        params.set('Rate',rating)
+    }
+
+    const MinPrice = document.getElementById('minPriceRange').value
+    if(MinPrice>0){
+        params.set('MinPrice',MinPrice)
+    }
+
+    const MaxPrice = document.getElementById('maxPriceRange').value
+    if(MaxPrice<500){
+        params.set('MaxPrice',MaxPrice)
+    }
+
+    const checkedCategory = document.querySelector('.category-list input:checked')
+    if(checkedCategory){
+        params.set('CategoryId',CATEGORY_IDS[checkedCategory.value])
+    }
+
+
+    fetch(`${API_BASE_URL}/api/products/filter?${params.toString()}`, {
         headers: {
             'X-API-KEY': API_KEY
         }
-
     })
         .then(function (response) {
             return response.json()
@@ -53,6 +100,11 @@ function renderPage() {
     prevPageBtn.disabled = currentPage === 1
     nextPageBtn.disabled = start + PRODUCTS_PER_PAGE >= allProducts.length
 }
+
+document.getElementById('spicinessRange').value = 0
+document.getElementById('ratingRange').value = 0
+document.getElementById('minPriceRange').value = 0
+document.getElementById('maxPriceRange').value = 500
 
 loadpage()
 
@@ -133,6 +185,60 @@ nextPageBtn.addEventListener('click',function(){
     }
     currentPage = currentPage + 1
     renderPage()
+})
+
+
+document.getElementById('filtersSidebar').addEventListener('input', function (event) {
+    if (event.target.id === 'spicinessRange') {
+        document.getElementById('spicinessValue').textContent = 'Level: ' + event.target.value
+    }
+
+    if (event.target.id === 'ratingRange') {
+        document.getElementById('ratingValue').innerHTML = '<i class="fa-solid fa-star"></i> ' + event.target.value + '+'
+    }
+
+    if (event.target.id === 'minPriceRange') {
+        document.getElementById('minPriceValue').textContent = '$' + event.target.value + '+'
+    }
+
+    if (event.target.id === 'maxPriceRange') {
+        document.getElementById('maxPriceValue').textContent = '$' + event.target.value + (event.target.value == 500 ? '+' : '')
+    }
+
+    currentPage = 1
+    loadpage()
+})
+
+document.getElementById('filtersSidebar').addEventListener('change', function (event) {
+    if (event.target.closest('.category-list')) {
+        document.querySelectorAll('.category-list input').forEach(function (checkbox) {
+            if (checkbox !== event.target) {
+                checkbox.checked = false
+            }
+        })
+    }
+
+    currentPage = 1
+    loadpage()
+})
+
+document.getElementById('clearFiltersBtn').addEventListener('click', function () {
+    document.getElementById('searchInput').value = ''
+    document.getElementById('vegOnly').checked = false
+    document.getElementById('spicinessRange').value = 0
+    document.getElementById('ratingRange').value = 0
+    document.getElementById('minPriceRange').value = 0
+    document.getElementById('maxPriceRange').value = 500
+    document.getElementById('spicinessValue').textContent = 'Level: not selected'
+    document.getElementById('ratingValue').innerHTML = '<i class="fa-solid fa-star"></i> 0.0+'
+    document.getElementById('minPriceValue').textContent = '$0+'
+    document.getElementById('maxPriceValue').textContent = '$ 500+'
+    document.querySelectorAll('.category-list input').forEach(function (checkbox) {
+        checkbox.checked = false
+    })
+
+    currentPage = 1
+    loadpage()
 })
 
 

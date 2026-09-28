@@ -1,7 +1,43 @@
+function logout() {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    window.location.reload()
+}
+
+function refreshAccessToken() {
+    const refreshToken = localStorage.getItem('refreshToken')
+
+    if (!refreshToken) {
+        logout()
+        return
+    }
+
+    fetch(`${API_BASE_URL}/api/auth/refresh-access-token/${refreshToken}`, {
+        method: 'POST',
+        headers: {
+            'X-API-KEY': API_KEY
+        }
+    })
+        .then(function (response) {
+            if (!response.ok) {
+                logout()
+                return null
+            }
+            return response.json()
+        })
+        .then(function (result) {
+            if (!result) {
+                return
+            }
+            localStorage.setItem('accessToken', result.data.accessToken)
+            localStorage.setItem('refreshToken', result.data.refreshToken)
+            window.location.reload()
+        })
+}
+
 const accessToken = localStorage.getItem('accessToken')
 
 if (accessToken) {
-    document.getElementById('userMenu').hidden = false
     fetch(`${API_BASE_URL}/api/users/me`, {
         headers: {
             'X-API-KEY': API_KEY,
@@ -9,9 +45,18 @@ if (accessToken) {
         }
     })
         .then(function (response) {
+            if (!response.ok) {
+                refreshAccessToken()
+                return null
+            }
+
+            document.getElementById('userMenu').hidden = false
             return response.json()
         })
         .then(function (result) {
+            if (!result) {
+                return
+            }
             document.getElementById('userNameLabel').textContent = result.data.firstName + ' ' + result.data.lastName;
         })
 
@@ -28,10 +73,7 @@ document.getElementById('avatarBtn').addEventListener('click', function () {
 })
 
 document.getElementById('logoutBtn').addEventListener('click', function () {
-    localStorage.removeItem('accessToken')
-    localStorage.removeItem('refreshToken')
-    window.location.reload()
-
+    logout()
 })
 
 
@@ -50,9 +92,15 @@ function updateCart() {
 
     })
         .then(function (response) {
+            if (!response.ok) {
+                return null
+            }
             return response.json()
         })
         .then(function (result) {
+            if (!result) {
+                return
+            }
             const cartBadge = document.getElementById('cartBadge')
             if (result.data.totalItems > 0) {
                 cartBadge.textContent = result.data.totalItems
