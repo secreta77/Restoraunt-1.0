@@ -20,8 +20,10 @@ fetch(`https://restaurantapi.stepacademy.ge/api/products?Take=50&Page=1
       
         dishGrid.innerHTML += `
         <div class="dish-card">
-          <img src="${product.image}" alt="${product.name}">
-          <h3>${product.name}</h3>
+          <a href="./html/product.html?id=${product.id}">
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+          </a>
           <p class="rating"><i class="fa-solid fa-star"></i> ${product.rate}</p>
           <p class="price">$${product.price.toFixed(2)}</p>
           <button class="btn-primary add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>

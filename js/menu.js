@@ -87,8 +87,10 @@ function renderPage() {
     pageProducts.forEach(function (product) {
         menuGrid.innerHTML += `
         <div class="dish-card">
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
+            <a href="./product.html?id=${product.id}">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+            </a>
             <p class="dish-description">${product.description}</p>
             <p class="rating"><i class="fa-solid fa-star"></i> ${product.rate}</p>
             <p class="price">$${product.price.toFixed(2)}</p>
