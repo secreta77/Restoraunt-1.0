@@ -15,7 +15,10 @@
             <div class="header-left">
                 <a href="../index.html" class="logo">Foodie</a>
 
-                <nav class="nav">
+                <nav class="nav" id="mainNav">
+                    <button class="nav-close-btn" id="navCloseBtn" type="button" aria-label="Close menu">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                     <a href="../index.html">Home</a>
                     <a href="./menu.html">Menu</a>
                 </nav>
@@ -44,9 +47,15 @@
                         <button id="logoutBtn" type="button">Logout</button>
                     </div>
                 </div>
+
+                <button class="burger-btn" id="burgerBtn" type="button" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
+
+    <div class="nav-backdrop" id="navBackdrop"></div>
 
     <main class="menu-page">
         <div class="menu-layout">

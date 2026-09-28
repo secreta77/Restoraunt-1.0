@@ -1,5 +1,6 @@
 html {
   font-size: 62.5%;
+  overflow-y: scroll;
 }
 
 body {
@@ -13,6 +14,12 @@ body {
   top: 0;
   z-index: 100;
   background-color: rgba(255, 255, 255, 0.85);
+}
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   backdrop-filter: blur(0.8rem);
   -webkit-backdrop-filter: blur(0.8rem);
 }
@@ -110,6 +117,9 @@ body {
 .header .header-container .nav a:hover {
   color: #ff6b35;
 }
+.header .header-container .nav .nav-close-btn {
+  display: none;
+}
 .header .header-container .header-actions {
   display: flex;
   align-items: center;
@@ -117,6 +127,16 @@ body {
 }
 .header .header-container .header-actions a {
   color: black;
+}
+.header .header-container .burger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  font-size: 1.8rem;
+  color: black;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -382,6 +402,66 @@ body {
   font-size: 1.5rem;
 }
 
+@media (max-width: 770px) {
+  .header .header-container .burger-btn {
+    display: inline-flex;
+    border: none;
+  }
+  .header .header-container .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 200;
+    width: min(28rem, 80vw);
+    height: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: white;
+    box-shadow: -0.4rem 0 1.6rem rgba(150, 149, 149, 0.15);
+    padding: 2rem 2.4rem 2.4rem;
+    overflow-y: auto;
+    transform: translateX(100%);
+  }
+  .header .header-container .nav.nav-open {
+    transform: translateX(0);
+  }
+  .header .header-container .nav.nav-animating {
+    transition: transform 0.3s ease;
+  }
+  .header .header-container .nav a {
+    padding: 1.4rem 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .header .header-container .nav a:last-child {
+    border-bottom: none;
+  }
+  .header .header-container .nav .nav-close-btn {
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-bottom: 1.6rem;
+    border: none;
+    background: none;
+    color: black;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .nav-backdrop.nav-open {
+    display: block;
+  }
+}
 @media (max-width: 780px) {
   .footer .footer-container {
     grid-template-columns: 1fr 1fr;

@@ -72,6 +72,32 @@ document.getElementById('avatarBtn').addEventListener('click', function () {
 
 })
 
+function setNavOpen(isOpen) {
+    const nav = document.getElementById('mainNav')
+    const backdrop = document.getElementById('navBackdrop')
+
+    nav.classList.add('nav-animating')
+    nav.classList.toggle('nav-open', isOpen)
+    backdrop.classList.toggle('nav-open', isOpen)
+
+    setTimeout(function () {
+        nav.classList.remove('nav-animating')
+    }, 300)
+}
+
+function closeNav() {
+    setNavOpen(false)
+}
+
+document.getElementById('burgerBtn').addEventListener('click', function () {
+    const isOpen = !document.getElementById('mainNav').classList.contains('nav-open')
+    setNavOpen(isOpen)
+})
+
+document.getElementById('navBackdrop').addEventListener('click', closeNav)
+
+document.getElementById('navCloseBtn').addEventListener('click', closeNav)
+
 document.getElementById('logoutBtn').addEventListener('click', function () {
     logout()
 })

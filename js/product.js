@@ -105,3 +105,74 @@ fetch(`${API_BASE_URL}/api/cart/add-to-cart`,{
 
 
 })
+
+
+fetch(`${API_BASE_URL}/api/products?Take=50&Page=1`,{
+    headers:{
+        'X-API-KEY':API_KEY
+    }
+})
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(result){
+        const relatedGrid = document.getElementById('relatedGrid')
+        const otherProducts = result.data.products.filter(function(item){
+            return item.id !== Number(productId)
+        })
+
+        const related = otherProducts.slice(0,3)
+
+        related.forEach(function(item){
+            relatedGrid.innerHTML +=`
+            <div class="dish-card">
+                <a href="./product.html?id=${item.id}">
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                </a>
+                <p class="dish-description">${item.description}</p>
+                <p class="rating"><i class="fa-solid fa-star"></i> ${item.rate}</p>
+                <p class="price">$${item.price.toFixed(2)}</p>
+                <button class="btn-primary add-to-cart-btn" data-product-id="${item.id}">Add to Cart</button>
+            </div>
+
+            `
+        })
+    })
+
+document.getElementById('relatedGrid').addEventListener('click', function(event){
+    const btn = event.target.closest('.add-to-cart-btn')
+    if(!btn){
+        return
+    }
+
+    const accessToken = localStorage.getItem('accessToken')
+
+    if(!accessToken){
+        window.location.href = './login.html'
+        return
+    }
+
+    fetch(`${API_BASE_URL}/api/cart/add-to-cart`,{
+        method:'POST',
+        headers:{
+            'X-API-KEY':API_KEY,
+            'Authorization':`Bearer ${accessToken}`,
+            'Content-type':'application/json'
+        },
+        body:JSON.stringify({productId:Number(btn.dataset.productId),quantity:1})
+    })
+    .then(function(response){
+        return response.json().then(function(result){
+            return {ok:response.ok,result:result}
+        })
+    })
+    .then(function(outcome){
+        if(outcome.ok){
+            showToast('Added to cart', 'Item added successfully.')
+            updateCart()
+        } else {
+            showToast('Could not add to cart', outcome.result.detail || 'Something went wrong, please try again.')
+        }
+    })
+})

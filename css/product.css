@@ -1,5 +1,5 @@
 .product-page {
-  max-width: 100rem;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 4rem 2rem;
 }
@@ -15,7 +15,7 @@
   margin-top: 3.2rem;
 }
 .product-info h1 {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
   font-weight: 700;
 }
 .product-info .rating {
@@ -24,7 +24,7 @@
   margin-top: 0.8rem;
 }
 .product-info .price {
-  font-size: 2.4rem;
+  font-size: 3.6rem;
   font-weight: 700;
   color: #ff6b35;
   margin-top: 0.8rem;
@@ -50,7 +50,7 @@
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #555;
   margin-top: 1.6rem;
   line-height: 1.6;
@@ -97,6 +97,99 @@
 #addToCartBtn {
   margin-top: 2rem;
   padding: 1.4rem 4rem;
+  font-size: 1.8rem;
+  width: 100%;
+  border-radius: 0.8rem;
+}
+
+@media (min-width: 900px) {
+  #productDetail {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+  }
+  .product-image {
+    flex: 0 0 45%;
+    max-height: 45rem;
+  }
+  .product-info {
+    flex: 1;
+    margin-top: 0;
+  }
+}
+.related-products {
+  margin-top: 4.8rem;
+}
+.related-products h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2.4rem;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.related-grid .dish-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.08);
+}
+.related-grid .dish-card a {
+  display: block;
+  color: inherit;
+}
+.related-grid .dish-card img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+.related-grid .dish-card h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 1.2rem 1.2rem 0.4rem;
+}
+.related-grid .dish-card .dish-description {
+  font-size: 1.3rem;
+  color: #666;
+  margin: 0 1.2rem 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.related-grid .dish-card .rating {
+  font-size: 1.4rem;
+  color: #ff6b35;
+  margin: 0 1.2rem 0.4rem;
+}
+.related-grid .dish-card .price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff6b35;
+  margin: 0 1.2rem 1.2rem;
+}
+.related-grid .dish-card .btn-primary {
+  display: block;
+  width: calc(100% - 2.4rem);
+  margin: auto 1.2rem 1.2rem;
+  padding: 1.2rem 0;
+  text-align: center;
+}
+
+@media (max-width: 780px) {
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*# sourceMappingURL=product.css.map */
