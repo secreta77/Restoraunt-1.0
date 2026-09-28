@@ -187,6 +187,11 @@ fetch(`${API_BASE_URL}/api/users/change-password`,{
     return response.json()
 })
 .then(function(result){
+    if(result.detail){
+        showToast('Error', result.detail)
+        return
+    }
+
     if(result.isSuccess===false){
         showToast('Error', result.error.message)
         return
