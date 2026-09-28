@@ -14,6 +14,7 @@ const removeConfirmBtn = document.getElementById('removeConfirmBtn')
 
 
 let itemIdToRemove = null
+let CartEmpty = 0
 
 function loadCart(){
     fetch(`${API_BASE_URL}/api/cart`,{
@@ -33,6 +34,11 @@ function loadCart(){
 
 
 function renderCart(cart){
+    CartEmpty = cart.totalItems === 0
+    checkoutBtn.disabled = CartEmpty
+
+
+
     cartItemCount.textContent = cart.totalItems + ' Items'
     subtotalValue.textContent = '$' + cart.totalPrice.toFixed(2)
 
@@ -139,6 +145,12 @@ removeConfirmBtn.addEventListener('click', function () {
 
 
 checkoutBtn.addEventListener('click',function(){
+
+    if(CartEmpty){
+        return
+    } 
+
+    
     fetch(`${API_BASE_URL}/api/cart/checkout`, {
         method:'POST',
         headers:{
