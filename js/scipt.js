@@ -58,6 +58,11 @@ if (accessToken) {
                 return
             }
             document.getElementById('userNameLabel').textContent = result.data.firstName + ' ' + result.data.lastName;
+
+
+            if(result.data.email === ADMIN_EMAIL){
+                document.getElementById('adminPanelLink').hidden = false
+            }
         })
 
 

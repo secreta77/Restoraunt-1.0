@@ -41,6 +41,15 @@ body {
             font-size: 1.7rem;
         }
 
+        .admin-panel-link {
+            font-size: 1.7rem;
+            color: black;
+
+            &:hover {
+                color: config.$primary-color;
+            }
+        }
+
         .header-left {
             display: flex;
             align-items: center;

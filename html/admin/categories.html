@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/admin.css">
+    <title>Admin · Categories</title>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-header-container">
+            <span class="admin-logo">Foodie Admin</span>
+
+            <nav class="admin-nav">
+                <a href="./products.html">Products</a>
+                <a href="./categories.html" class="active">Categories</a>
+            </nav>
+
+            <div class="admin-header-actions">
+                <a href="../../index.html">View Site</a>
+                <button class="btn-outline" id="logoutBtn" type="button">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-page">
+        <div class="admin-page-header">
+            <h1>Categories</h1>
+            <button class="btn-primary" id="addCategoryBtn" type="button">Add Category</button>
+        </div>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="categoriesTableBody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <div class="admin-panel-backdrop" id="categoryPanelBackdrop"></div>
+    <aside class="admin-panel" id="categoryPanel">
+        <div class="admin-panel-header">
+            <h2 id="categoryPanelTitle">Add Category</h2>
+            <button class="admin-panel-close-btn" id="categoryPanelCloseBtn" type="button" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form class="admin-form" id="categoryForm">
+            <input type="hidden" id="categoryId">
+
+            <div>
+                <label for="categoryName">Name</label>
+                <input type="text" id="categoryName" required>
+            </div>
+
+            <div class="admin-form-actions">
+                <button type="submit" class="btn-primary">Save</button>
+                <button type="button" class="btn-outline" id="categoryPanelCancelBtn">Cancel</button>
+            </div>
+        </form>
+    </aside>
+
+    <script src="../../js/config.js"></script>
+    <script src="../../js/admin-guard.js"></script>
+    <script src="../../js/admin-categories.js"></script>
+</body>
+</html>

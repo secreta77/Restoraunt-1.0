@@ -1,0 +1,241 @@
+.admin-header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  padding: 1.6rem 2rem;
+}
+.admin-header .admin-header-container {
+  max-width: 160rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.admin-header .admin-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff6b35;
+}
+.admin-header .admin-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+.admin-header .admin-nav a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: black;
+}
+.admin-header .admin-nav a:hover, .admin-header .admin-nav a.active {
+  color: #ff6b35;
+}
+.admin-header .admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.admin-header .admin-header-actions a {
+  font-size: 1.3rem;
+  color: #666;
+}
+
+.admin-page {
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 3.2rem 2rem;
+}
+
+.admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+.admin-page-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #eee;
+  border-radius: 0.8rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+}
+.admin-table th, .admin-table td {
+  text-align: left;
+  padding: 1.2rem 1.6rem;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+}
+.admin-table th {
+  background-color: #fafafa;
+  font-weight: 700;
+  color: #666;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+.admin-table img {
+  width: 4.8rem;
+  height: 4.8rem;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+.admin-table .row-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+.admin-table .icon-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.6rem;
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+}
+.admin-table .icon-btn:hover:not(:disabled) {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+.admin-table .icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.admin-table .veg-tag {
+  color: #2e7d32;
+  font-size: 1.2rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2.4rem;
+}
+
+.pagination-btn {
+  padding: 0.8rem 1.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.8rem;
+  background-color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.pagination-btn:hover:not(:disabled) {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-panel-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.admin-panel-backdrop.open {
+  display: block;
+}
+
+.admin-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 300;
+  width: min(44rem, 92vw);
+  height: 100%;
+  background-color: white;
+  box-shadow: -0.4rem 0 1.6rem rgba(0, 0, 0, 0.15);
+  padding: 2.4rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+}
+.admin-panel.open {
+  transform: translateX(0);
+}
+.admin-panel.animating {
+  transition: transform 0.3s ease;
+}
+
+.admin-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.admin-panel-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.admin-panel-close-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  color: black;
+  cursor: pointer;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.admin-form label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.admin-form input, .admin-form textarea, .admin-form select {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  font-family: sans-serif;
+}
+.admin-form textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+.admin-form .checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.admin-form .checkbox-row label {
+  margin-bottom: 0;
+}
+.admin-form .checkbox-row input {
+  width: auto;
+}
+.admin-form .admin-form-actions {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 780px) {
+  .admin-header .admin-header-container {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+}
+
+/*# sourceMappingURL=admin.css.map */

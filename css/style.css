@@ -35,6 +35,13 @@ body {
 .header .header-container .fa-cart-shopping {
   font-size: 1.7rem;
 }
+.header .header-container .admin-panel-link {
+  font-size: 1.7rem;
+  color: black;
+}
+.header .header-container .admin-panel-link:hover {
+  color: #ff6b35;
+}
 .header .header-container .header-left {
   display: flex;
   align-items: center;
