@@ -233,6 +233,11 @@ body {
   color: #ff6b35;
   margin: 0 1.6rem;
 }
+.popular-dishes .dish-card .spiciness {
+  font-size: 1.4rem;
+  color: #e53935;
+  margin: 0.4rem 1.6rem 0;
+}
 .popular-dishes .dish-card .price {
   font-size: 1.8rem;
   font-weight: 700;

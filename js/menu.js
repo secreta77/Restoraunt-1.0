@@ -1,9 +1,14 @@
 const menuGrid = document.getElementById('menuGrid');
 const resultCount = document.getElementById('resultsCount')
 
-const PRODUCTS_PER_PAGE = 10
+const pageSizeSelect = document.getElementById('pageSizeSelect')
+const pageLabel = document.getElementById('pageLabel')
+
+
 let currentPage = 1
-let allProducts = []
+let currentPageProducts = []
+let hasMore = false
+let request = 0
 
 const CATEGORY_IDS = {
     'Appetizers': 1,
@@ -21,9 +26,15 @@ const nextPageBtn = document.getElementById('nextPageBtn')
 
 
 function loadpage() {
+
+    const seq = ++request
+
+
+
+
     const params = new URLSearchParams()
-    params.set('Take','100')
-    params.set('Page','1')
+    params.set('Take', pageSizeSelect.value)
+    params.set('Page',currentPage)
 
     const searchInput = document.getElementById('searchInput').value
     if(searchInput){
@@ -66,25 +77,26 @@ function loadpage() {
             return response.json()
         })
         .then(function (result) {
-            allProducts = result.data.products
+            if(seq !==request){
+                return
+            }
+        currentPageProducts = result.data.products
+        hasMore = result.data.hasMore
 
-            allProducts.sort(function (a, b) {
-                return b.rate - a.rate;
-              });
+        renderPage()
 
-            renderPage()
         })
 }
 
 function renderPage() {
-    const start = (currentPage - 1) * PRODUCTS_PER_PAGE
-    const pageProducts = allProducts.slice(start, start + PRODUCTS_PER_PAGE)
 
-    resultCount.textContent = 'Showing ' + pageProducts.length + ' products'
+
+    resultCount.textContent = 'Showing ' + currentPageProducts.length + ' products'
+    pageLabel.textContent = 'Page ' + currentPage
 
     menuGrid.innerHTML = ''
 
-    pageProducts.forEach(function (product) {
+    currentPageProducts.forEach(function (product) {
         menuGrid.innerHTML += `
         <div class="dish-card">
             <a href="./product.html?id=${product.id}">
@@ -93,6 +105,7 @@ function renderPage() {
             </a>
             <p class="dish-description">${product.description}</p>
             <p class="rating"><i class="fa-solid fa-star"></i> ${product.rate}</p>
+            ${product.spiciness > 0 ? '<p class="spiciness"><i class="fa-solid fa-pepper-hot"></i> ' + product.spiciness + '/5</p>' : ''}
             <p class="price">$${product.price.toFixed(2)}</p>
             <button class="btn-primary add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
         </div>
@@ -100,7 +113,7 @@ function renderPage() {
     })
 
     prevPageBtn.disabled = currentPage === 1
-    nextPageBtn.disabled = start + PRODUCTS_PER_PAGE >= allProducts.length
+    nextPageBtn.disabled = !hasMore
 }
 
 document.getElementById('spicinessRange').value = 0
@@ -176,17 +189,20 @@ prevPageBtn.addEventListener('click' ,function(){
         return
     }
     currentPage = currentPage - 1
-    renderPage()
+    loadpage()
 })
 
 
 nextPageBtn.addEventListener('click',function(){
-    const start = currentPage * PRODUCTS_PER_PAGE
-    if(start >= allProducts.length){
+    if(!hasMore){
         return
     }
     currentPage = currentPage + 1
-    renderPage()
+    loadpage()
+})
+pageSizeSelect.addEventListener('change',function(){
+    currentPage = 1
+    loadpage()
 })
 
 

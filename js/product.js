@@ -12,8 +12,9 @@ fetch(`${API_BASE_URL}/api/products/${productId}`,{
     return response.json()
 })
 .then(function(result){
-    const product = result.data 
+    const product = result.data
     const vegetarianBadge = product.vegetarian ? '<div class="veg-badge"><i class="fa-solid fa-leaf"></i> Vegetarian</div>' : ''
+    const spicinessBadge = product.spiciness > 0 ? '<p class="spiciness"><i class="fa-solid fa-pepper-hot"></i> Spiciness: ' + product.spiciness + '/5</p>' : ''
     const ingredientsList = product.ingredients.map(function(ingredient){
         return '<li>' + ingredient + "</li>"
     }).join('')
@@ -26,6 +27,8 @@ fetch(`${API_BASE_URL}/api/products/${productId}`,{
         <p class="rating"><i class="fa-solid fa-star"></i> ${product.rate}</p>
 
         <p class="price">$${product.price.toFixed(2)}</p>
+
+        ${spicinessBadge}
 
         ${vegetarianBadge}
 
@@ -132,6 +135,7 @@ fetch(`${API_BASE_URL}/api/products?Take=50&Page=1`,{
                 </a>
                 <p class="dish-description">${item.description}</p>
                 <p class="rating"><i class="fa-solid fa-star"></i> ${item.rate}</p>
+                ${item.spiciness > 0 ? '<p class="spiciness"><i class="fa-solid fa-pepper-hot"></i> ' + item.spiciness + '/5</p>' : ''}
                 <p class="price">$${item.price.toFixed(2)}</p>
                 <button class="btn-primary add-to-cart-btn" data-product-id="${item.id}">Add to Cart</button>
             </div>

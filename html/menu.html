@@ -110,7 +110,7 @@
 
                 <div class="filter-group">
                     <label for="minPriceRange">Min price</label>
-                    <input type="range" id="minPriceRange" min="0" max="100" step="10">
+                    <input type="range" id="minPriceRange" min="0" max="100" step="2">
                     <p class="range-value" id="minPriceValue">$0+</p>
 
 
@@ -118,7 +118,7 @@
 
                 <div class="filter-group">
                     <label for="maxPriceRange">Max price</label>
-                    <input type="range" id="maxPriceRange" min="0" max="500" step="10">
+                    <input type="range" id="maxPriceRange" min="0" max="500" step="2">
                     <p class="range-value" id="maxPriceValue">$ 500+</p>
                 </div>
 
@@ -140,7 +140,19 @@
 
                 <div class="pagination" id="pagination">
                     <button class="pagination-btn" id="prevPageBtn" type="button" disabled>‹ Previous</button>
+                    <span class="pagination-page-label" id="pageLabel">Page 1</span>
                     <button class="pagination-btn" id="nextPageBtn" type="button">Next ›</button>
+
+                    <label class="page-size-label">
+                        Per page:
+                        <select id="pageSizeSelect">
+                            <option value="5">5</option>
+                            <option value="8">8</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </label>
                 </div>
             </div>
         </div>

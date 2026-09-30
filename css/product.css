@@ -23,6 +23,11 @@
   color: #ff6b35;
   margin-top: 0.8rem;
 }
+.product-info .spiciness {
+  font-size: 1.5rem;
+  color: #e53935;
+  margin-top: 0.8rem;
+}
 .product-info .price {
   font-size: 3.6rem;
   font-weight: 700;
@@ -165,6 +170,11 @@
 .related-grid .dish-card .rating {
   font-size: 1.4rem;
   color: #ff6b35;
+  margin: 0 1.2rem 0.4rem;
+}
+.related-grid .dish-card .spiciness {
+  font-size: 1.4rem;
+  color: #e53935;
   margin: 0 1.2rem 0.4rem;
 }
 .related-grid .dish-card .price {

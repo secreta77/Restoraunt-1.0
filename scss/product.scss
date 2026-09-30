@@ -27,6 +27,12 @@
         margin-top: 0.8rem;
     }
 
+    .spiciness {
+        font-size: 1.5rem;
+        color: #e53935;
+        margin-top: 0.8rem;
+    }
+
     .price {
         font-size: 3.6rem;
         font-weight: 700;
@@ -182,6 +188,12 @@
         .rating {
             font-size: 1.4rem;
             color: config.$primary-color;
+            margin: 0 1.2rem 0.4rem;
+        }
+
+        .spiciness {
+            font-size: 1.4rem;
+            color: #e53935;
             margin: 0 1.2rem 0.4rem;
         }
 

@@ -25,6 +25,7 @@ fetch(`https://restaurantapi.stepacademy.ge/api/products?Take=50&Page=1
             <h3>${product.name}</h3>
           </a>
           <p class="rating"><i class="fa-solid fa-star"></i> ${product.rate}</p>
+          ${product.spiciness > 0 ? '<p class="spiciness"><i class="fa-solid fa-pepper-hot"></i> ' + product.spiciness + '/5</p>' : ''}
           <p class="price">$${product.price.toFixed(2)}</p>
           <button class="btn-primary add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
         </div>

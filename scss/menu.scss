@@ -271,6 +271,12 @@
             margin: 0 1.6rem;
         }
 
+        .spiciness {
+            font-size: 1.4rem;
+            color: #e53935;
+            margin: 0.4rem 1.6rem 0;
+        }
+
         .price {
             font-size: 1.8rem;
             font-weight: 700;
@@ -290,6 +296,8 @@
 
 .pagination {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     gap: 1.6rem;
     margin-top: 3.2rem;
@@ -312,6 +320,29 @@
     &:disabled {
         opacity: 0.9;
         cursor: not-allowed;
+    }
+}
+
+.pagination-page-label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #666;
+}
+
+.page-size-label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    color: #666;
+
+    select {
+        padding: 0.8rem 1.2rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.8rem;
+        font-size: 1.4rem;
+        font-family: config.$font-main;
+        cursor: pointer;
     }
 }
 
