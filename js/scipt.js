@@ -62,6 +62,12 @@ if (accessToken) {
 
             if(result.data.email === ADMIN_EMAIL){
                 document.getElementById('adminPanelLink').hidden = false
+                document.body.classList.add('admin-mode')
+
+                const adminBanner = document.createElement('div')
+                adminBanner.className = 'admin-mode-banner'
+                adminBanner.textContent = 'Admin Mode'
+                document.body.prepend(adminBanner)
             }
         })
 

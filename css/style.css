@@ -9,6 +9,20 @@ body {
   color: black;
 }
 
+body.admin-mode {
+  background-color: rgb(147, 147, 147);
+}
+
+.admin-mode-banner {
+  background-color: #ff6b35;
+  color: white;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.8rem;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -156,7 +170,7 @@ body {
   border-radius: 3rem;
 }
 .btn-primary:hover {
-  background-color: rgb(100%, 34.8811492914%, 11.1215686275%);
+  background-color: rgb(255, 88.9469306931, 28.36);
 }
 
 .hero {
@@ -207,6 +221,7 @@ body {
   text-align: left;
   border-radius: 1.2rem;
   overflow: hidden;
+  background-color: white;
   box-shadow: 0 0.8rem 2.4rem rgba(255, 107, 53, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -221,7 +236,8 @@ body {
 .popular-dishes .dish-card img {
   width: 100%;
   height: 26rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .popular-dishes .dish-card h3 {
   font-size: 2rem;
@@ -267,7 +283,8 @@ body {
   width: 100%;
   height: 40rem;
   border-radius: 0.8rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .story .story-container .right-side {
   max-width: 65rem;
@@ -483,6 +500,4 @@ body {
   .footer .footer-container {
     grid-template-columns: 1fr;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

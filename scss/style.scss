@@ -12,6 +12,20 @@ body {
     color: black;
 }
 
+body.admin-mode {
+    background-color:rgb(147, 147, 147);
+}
+
+.admin-mode-banner {
+    background-color: config.$primary-color;
+    color: white;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.8rem;
+}
+
 .header{
         position: sticky;
         top: 0;
@@ -246,6 +260,7 @@ body {
         text-align: left;
         border-radius: 1.2rem;
         overflow: hidden;
+        background-color: white;
         box-shadow: 0 0.8rem 2.4rem rgba(255, 107, 53, 0.35);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
 

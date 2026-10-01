@@ -142,6 +142,7 @@
   text-align: left;
   border-radius: 1.2rem;
   overflow: hidden;
+  background-color: white;
   box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.08);
 }
 .related-grid .dish-card a {
