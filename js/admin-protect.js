@@ -18,7 +18,7 @@ function checkAdminAccess(token) {
                 return response.json()
             }
 
-            // access token ვადაგასულია სავარაუდოდ — ჯერ refresh ვცადოთ, მაშინვე არ გამოვაგდოთ
+
             return refreshAndRetry()
         })
         .then(function (result) {
@@ -53,11 +53,11 @@ function refreshAndRetry() {
             return response.json()
         })
         .then(function (result) {
-            // ახალი token-ები ვინახავთ — ზუსტად ის, რასაც scipt.js-იც აკეთებს
+
             localStorage.setItem('accessToken', result.data.accessToken)
             localStorage.setItem('refreshToken', result.data.refreshToken)
 
-            // ახალი token-ით თავიდან ვცადოთ /users/me, რომ email-საც გადავამოწმოთ
+
             return fetch(`${API_BASE_URL}/api/users/me`, {
                 headers: {
                     'X-API-KEY': API_KEY,

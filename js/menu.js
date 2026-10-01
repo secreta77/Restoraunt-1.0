@@ -9,6 +9,7 @@ let currentPage = 1
 let currentPageProducts = []
 let hasMore = false
 let request = 0
+let filterFix 
 
 const CATEGORY_IDS = {
     'Appetizers': 1,
@@ -223,11 +224,18 @@ document.getElementById('filtersSidebar').addEventListener('input', function (ev
         document.getElementById('maxPriceValue').textContent = '$' + event.target.value + (event.target.value == 500 ? '+' : '')
     }
 
-    currentPage = 1
-    loadpage()
+    clearTimeout(filterFix)
+    filterFix = setTimeout(function(){
+        currentPage = 1
+        loadpage()
+
+    },300)
+
 })
 
 document.getElementById('filtersSidebar').addEventListener('change', function (event) {
+    clearTimeout(filterFix)
+
     if (event.target.closest('.category-list')) {
         document.querySelectorAll('.category-list input').forEach(function (checkbox) {
             if (checkbox !== event.target) {

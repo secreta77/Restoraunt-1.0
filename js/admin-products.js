@@ -245,10 +245,3 @@ document.getElementById('logoutBtn').addEventListener('click', function () {
 })
 
 loadCategories().then(loadProducts)
-
-
-
-
-
-
-
