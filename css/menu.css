@@ -227,7 +227,8 @@
 .menu-content .dish-card img {
   width: 100%;
   height: 20rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .menu-content .dish-card h3 {
   font-size: 1.8rem;
@@ -358,6 +359,4 @@
   .filters-backdrop.open {
     display: block;
   }
-}
-
-/*# sourceMappingURL=menu.css.map */
+}/*# sourceMappingURL=menu.css.map */

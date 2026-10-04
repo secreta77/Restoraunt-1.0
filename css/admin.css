@@ -86,7 +86,8 @@
 .admin-table img {
   width: 4.8rem;
   height: 4.8rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 0.6rem;
 }
 .admin-table .row-actions {
@@ -236,6 +237,4 @@
     flex-wrap: wrap;
     gap: 1.2rem;
   }
-}
-
-/*# sourceMappingURL=admin.css.map */
+}/*# sourceMappingURL=admin.css.map */
