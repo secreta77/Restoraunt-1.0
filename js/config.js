@@ -10,11 +10,18 @@ function showToast(title, message) {
     const toast = document.createElement('div');
     toast.className = 'alert';
     toast.innerHTML = `
+        <button class="alert-close" type="button" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
         <div class="alert-title">${title}</div>
         <div class="alert-message">${message}</div>
     `;
 
     document.body.appendChild(toast);
+
+    toast.querySelector('.alert-close').addEventListener('click', function () {
+        toast.remove();
+    });
 
     setTimeout(function () {
         toast.remove();
