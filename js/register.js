@@ -27,7 +27,7 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
 
         .then(function (result) {
             if (!result.data) {
-                alert(result.detail || 'Registration failed')
+                showToast('Registration failed', result.detail || 'Please check your details and try again.')
                 return
             }
 

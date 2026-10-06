@@ -18,7 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         })
         .then(function (result) {
             if (!result.data) {
-                alert(result.detail || 'Login failed');
+                showToast('Login failed', result.detail || 'Please check your email and password.');
                 return;
             }
 

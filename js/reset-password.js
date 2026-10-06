@@ -34,8 +34,10 @@ fetch(`${API_BASE_URL}/api/auth/reset-password`,{
         return;
     }
 
-    alert('Your password has been reset. You can now sign in.');
-    window.location.href = './login.html';
+    showToast('Password reset', 'You can now sign in.');
+    setTimeout(function () {
+        window.location.href = './login.html';
+    }, 1500);
 })
 })
 

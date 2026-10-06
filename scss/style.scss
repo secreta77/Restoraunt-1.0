@@ -528,7 +528,7 @@ body.admin-mode {
     width: min(37rem, 90vw);
     z-index: 1000;
     text-align: center;
-    animation: alert-slide-down 0.4s ease-out;
+    animation: alert-slide-down 0.4s ease-out forwards;
 
     .alert-title {
         font-size: 1.8rem;

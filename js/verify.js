@@ -21,12 +21,14 @@ document.getElementById('verifyForm').addEventListener('submit', function (event
         })
         .then(function (result) {
             if (result.detail) {
-                alert(result.detail);
+                showToast('Verification failed', result.detail);
                 return;
             }
 
-            alert('Email verified! You can now sign in.');
-            window.location.href = './login.html';
+            showToast('Email verified', 'You can now sign in.');
+            setTimeout(function () {
+                window.location.href = './login.html';
+            }, 1500);
         });
 });
 

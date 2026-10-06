@@ -237,7 +237,9 @@ document.getElementById('confirmDeleteBtn').addEventListener('click',function(){
         }
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
-    alert('your account has been deleted')
-    window.location.href='../index.html'
+    showToast('Account deleted', 'Your account has been deleted.')
+    setTimeout(function () {
+        window.location.href = '../index.html'
+    }, 1500)
     })
 })

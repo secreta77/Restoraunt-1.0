@@ -9,16 +9,7 @@ let currentPage = 1
 let currentPageProducts = []
 let hasMore = false
 let request = 0
-let filterFix 
-
-const CATEGORY_IDS = {
-    'Appetizers': 1,
-    'First Courses': 2,
-    'Main Courses': 3,
-    'Pizzas': 4,
-    'Side Dishes': 5,
-    'Desserts': 6
-}
+let filterFix
 
 const prevPageBtn = document.getElementById('prevPageBtn')
 const nextPageBtn = document.getElementById('nextPageBtn')
@@ -65,7 +56,7 @@ function loadpage() {
 
     const checkedCategory = document.querySelector('.category-list input:checked')
     if(checkedCategory){
-        params.set('CategoryId',CATEGORY_IDS[checkedCategory.value])
+        params.set('CategoryId', checkedCategory.value)
     }
 
 
@@ -122,6 +113,24 @@ document.getElementById('ratingRange').value = 0
 document.getElementById('minPriceRange').value = 0
 document.getElementById('maxPriceRange').value = 500
 
+function loadCategories() {
+    fetch(`${API_BASE_URL}/api/categories`, {
+        headers: {
+            'X-API-KEY': API_KEY
+        }
+    })
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (result) {
+            const categoryList = document.querySelector('.category-list')
+            categoryList.innerHTML = result.data.map(function (category) {
+                return `<label class="checkbox-row"><input type="checkbox" value="${category.id}"> ${category.name}</label>`
+            }).join('')
+        })
+}
+
+loadCategories()
 loadpage()
 
 const filterToggleBtn = document.getElementById('filterToggleBtn')
