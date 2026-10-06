@@ -286,7 +286,6 @@ body.admin-mode {
 }
 .story .story-container .right-side {
   max-width: 65rem;
-  min-width: 32rem;
   width: 100%;
   flex: 1;
 }
@@ -324,7 +323,7 @@ body.admin-mode {
 }
 .footer {
   background-color: #f8f8f8;
-  padding: 6rem 2rem 3rem;
+  padding: 4rem 2rem 3rem;
 }
 .footer .footer-container {
   max-width: 160rem;

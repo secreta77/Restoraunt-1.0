@@ -7,8 +7,7 @@
 .product-image {
   width: 100%;
   max-height: 45rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 1.2rem;
 }
 
@@ -124,7 +123,7 @@
   }
 }
 .related-products {
-  margin-top: 4.8rem;
+  margin-top: 4rem;
 }
 .related-products h2 {
   font-size: 3rem;
@@ -153,8 +152,7 @@
 .related-grid .dish-card img {
   width: 100%;
   height: 20rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .related-grid .dish-card h3 {
   font-size: 1.6rem;
@@ -203,4 +201,6 @@
   .related-grid {
     grid-template-columns: 1fr;
   }
-}/*# sourceMappingURL=product.css.map */
+}
+
+/*# sourceMappingURL=product.css.map */

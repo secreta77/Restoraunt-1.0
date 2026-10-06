@@ -19,7 +19,7 @@
 
 .chat-panel {
     position: absolute;
-    bottom: 6.8rem;
+    bottom: calc(5.6rem + 1.2rem);
     right: 0;
     width: 32rem;
     height: 46rem;
